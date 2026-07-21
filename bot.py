@@ -136,11 +136,8 @@ async def start(update: Update, context: ContextTypes.DEFAULT_TYPE):
                 course = ALL_COURSES[course_id]
                 if part_num in course["videos"]:
                     video_id = course["videos"][part_num]
-                    if "File ID" in str(video_id):
-                        await update.message.reply_text("⚠️ ဤအပိုင်းအတွက် ဗီဒီယို File ID ထည့်ရန် ကျန်သေးသည်။")
-                    else:
-                        await update.message.reply_text(f"✅ {course['title']} (S01Ep0{part_num})")
-                        await update.message.reply_video(video=video_id)
+                    await update.message.reply_text(f"✅ {course['title']} (S01Ep0{part_num})")
+                    await update.message.reply_video(video=video_id)
                     return
                 else:
                     await update.message.reply_text(
@@ -189,6 +186,7 @@ async def button_handler(update: Update, context: ContextTypes.DEFAULT_TYPE):
         course = ALL_COURSES[course_id]
         if part_num in course["videos"]:
             video_id = course["videos"][part_num]
+            # File ID နေရာမှာ စာသားအမှန်မဟုတ်ဘဲ "File ID ထည့်ရန်" ဖြစ်နေရင် သတိပေးချက်ပြမယ်
             if "File ID" in str(video_id):
                 await query.message.reply_text("⚠️ ဤအပိုင်းအတွက် ဗီဒီယို File ID ထည့်ရန် ကျန်သေးသည်။")
             else:
@@ -197,16 +195,12 @@ async def button_handler(update: Update, context: ContextTypes.DEFAULT_TYPE):
 
 def main():
     # Bot ကို စတင် Run မည့် အဓိက အပိုင်း
-    TOKEN_KEY = "8930481030:AAESGgpg4aEzGgCIvxIq85O9WGiFmOkojCM"
-    
-    application = Application.builder().token(TOKEN_KEY).build()
+    application = Application.builder().token(TOKEN).build()
 
-    # Handler တွေ ထည့်သွင်းခြင်း (button_handler ကို မှန်ကန်စွာ ချိတ်ဆက်ပေးထားပါသည်)
     application.add_handler(CommandHandler("start", start))
     application.add_handler(CallbackQueryHandler(button_handler))
 
     # Bot ကို စတင်လည်ပတ်စေခြင်း
-    print("Bot is running...")
     application.run_polling()
 
 if __name__ == "__main__":
