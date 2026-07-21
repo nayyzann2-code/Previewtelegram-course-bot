@@ -195,14 +195,18 @@ async def button_handler(update: Update, context: ContextTypes.DEFAULT_TYPE):
 
 def main():
     # Bot ကို စတင် Run မည့် အဓိက အပိုင်း
+    # သင့်ရဲ့ Bot Token ကို ဖြည့်ပါ (သို့မဟုတ် Environment Variable သုံးပါက os.getenv('TOKEN') ကိုသုံးပါ)
+    TOKEN = "8930481030:AAESGgpg4aEzGgCIvxIq85O9WGiFmOkojCM"
+    
     application = Application.builder().token(TOKEN).build()
 
+    # Handler တွေ ထည့်သွင်းခြင်း
     application.add_handler(CommandHandler("start", start))
-    application.add_handler(CallbackQueryHandler(button_handler))
+    application.add_handler(CallbackQueryHandler(button_callback))  # ခလုတ်နှိပ်တာတွေကို လက်ခံမယ့် Handler
 
     # Bot ကို စတင်လည်ပတ်စေခြင်း
+    print("Bot is running...")
     application.run_polling()
 
 if __name__ == "__main__":
     main()
-                
