@@ -4,7 +4,6 @@ from telegram.ext import Application, CallbackQueryHandler, CommandHandler, Cont
 TOKEN = "8930481030:AAESGgpg4aEzGgCIvxIq85O9WGiFmOkojCM"
 OWNER = "https://t.me/naywww01"
 
-# 📂 ခေါင်းစဉ် ၁၀ ခုစာအတွက် ဗီဒီယို File ID များ
 ALL_COURSES = {
     "flash": {
         "title": "The Flash (2014)",
@@ -14,106 +13,6 @@ ALL_COURSES = {
             3: "AAMCBQADGQEDXl5-al9mFiIMkV1nc2RucvmJodK_ULoAAiYeAAKFy4FUNRtZ8dDMvisBAAdtAAM9BA",
             4: "AAMCBQADGQEDXl8-al9m0URt8_QaItigKtAt9NYDt-IAAiseAAKFy4FUtGnma9kwiGUBAAdtAAM9BA",
             5: "AAMCBQADGQEDXl9Nal9m22u3eqv_ckXtOZQcONYNa0AAAtcjAAJZxHhUy55L6Rw8zuoBAAdtAAM9BA",
-            6: "အပိုင်း ၆ ရဲ့ File ID",
-        }
-    },
-    "spiderman": {
-        "title": "Spider-Man",
-        "videos": {
-            1: "File ID ထည့်ရန်",
-            2: "File ID ထည့်ရန်",
-            3: "File ID ထည့်ရန်",
-            4: "File ID ထည့်ရန်",
-            5: "File ID ထည့်ရန်",
-            6: "File ID ထည့်ရန်",
-        }
-    },
-    "batman": {
-        "title": "The Batman",
-        "videos": {
-            1: "File ID ထည့်ရန်",
-            2: "File ID ထည့်ရန်",
-            3: "File ID ထည့်ရန်",
-            4: "File ID ထည့်ရန်",
-            5: "File ID ထည့်ရန်",
-            6: "File ID ထည့်ရန်",
-        }
-    },
-    "ironman": {
-        "title": "Iron Man",
-        "videos": {
-            1: "File ID ထည့်ရန်",
-            2: "File ID ထည့်ရန်",
-            3: "File ID ထည့်ရန်",
-            4: "File ID ထည့်ရန်",
-            5: "File ID ထည့်ရန်",
-            6: "File ID ထည့်ရန်",
-        }
-    },
-    "thor": {
-        "title": "Thor",
-        "videos": {
-            1: "File ID ထည့်ရန်",
-            2: "File ID ထည့်ရန်",
-            3: "File ID ထည့်ရန်",
-            4: "File ID ထည့်ရန်",
-            5: "File ID ထည့်ရန်",
-            6: "File ID ထည့်ရန်",
-        }
-    },
-    "captain": {
-        "title": "Captain America",
-        "videos": {
-            1: "File ID ထည့်ရန်",
-            2: "File ID ထည့်ရန်",
-            3: "File ID ထည့်ရန်",
-            4: "File ID ထည့်ရန်",
-            5: "File ID ထည့်ရန်",
-            6: "File ID ထည့်ရန်",
-        }
-    },
-    "superman": {
-        "title": "Superman",
-        "videos": {
-            1: "File ID ထည့်ရန်",
-            2: "File ID ထည့်ရန်",
-            3: "File ID ထည့်ရန်",
-            4: "File ID ထည့်ရန်",
-            5: "File ID ထည့်ရန်",
-            6: "File ID ထည့်ရန်",
-        }
-    },
-    "avengers": {
-        "title": "Avengers",
-        "videos": {
-            1: "File ID ထည့်ရန်",
-            2: "File ID ထည့်ရန်",
-            3: "File ID ထည့်ရန်",
-            4: "File ID ထည့်ရန်",
-            5: "File ID ထည့်ရန်",
-            6: "File ID ထည့်ရန်",
-        }
-    },
-    "matrix": {
-        "title": "The Matrix",
-        "videos": {
-            1: "File ID ထည့်ရန်",
-            2: "File ID ထည့်ရန်",
-            3: "File ID ထည့်ရန်",
-            4: "File ID ထည့်ရန်",
-            5: "File ID ထည့်ရန်",
-            6: "File ID ထည့်ရန်",
-        }
-    },
-    "avatar": {
-        "title": "Avatar",
-        "videos": {
-            1: "File ID ထည့်ရန်",
-            2: "File ID ထည့်ရန်",
-            3: "File ID ထည့်ရန်",
-            4: "File ID ထည့်ရန်",
-            5: "File ID ထည့်ရန်",
-            6: "File ID ထည့်ရန်",
         }
     }
 }
@@ -129,14 +28,14 @@ async def start(update: Update, context: ContextTypes.DEFAULT_TYPE):
             
             if course_id in ALL_COURSES:
                 course = ALL_COURSES[course_id]
-                if 1 <= part_num <= 6 and part_num in course["videos"]:
+                if 1 <= part_num <= 5 and part_num in course["videos"]:
                     video_id = course["videos"][part_num]
                     await update.message.reply_text(f"✅ {course['title']} (S01Ep0{part_num})")
                     await update.message.reply_video(video=video_id)
                     return
                 else:
                     await update.message.reply_text(
-                        "⚠️ အပိုင်း 7 မှစ၍ Free မဟုတ်တော့ပါ။\n\n"
+                        "⚠️ အပိုင်း 6 မှစ၍ Free မဟုတ်တော့ပါ။\n\n"
                         "ဆက်လက်ကြည့်ရှုရန် **မန်ဘာဝင်ရန်** လိုအပ်ပါသည်။ "
                         f"မန်ဘာဝင်ရန် Owner ကို ဆက်သွယ်ပါ 👉 {OWNER}"
                     )
@@ -180,16 +79,10 @@ async def button_handler(update: Update, context: ContextTypes.DEFAULT_TYPE):
         part_num = int(part_num)
         
         course = ALL_COURSES[course_id]
-        if 1 <= part_num <= 6 and part_num in course["videos"]:
+        if 1 <= part_num <= 5 and part_num in course["videos"]:
             video_id = course["videos"][part_num]
             await query.message.reply_text(f"✅ {course['title']} (S01Ep0{part_num})")
             await query.message.reply_video(video=video_id)
-        else:
-            await query.message.reply_text(
-                "⚠️ အပိုင်း 7 မှစ၍ Free မဟုတ်တော့ပါ။\n\n"
-                "ဆက်လက်ကြည့်ရှုရန် **မန်ဘာဝင်ရန်** လိုအပ်ပါသည်။ "
-                f"မန်ဘာဝင်ရန် Owner ကို ဆက်သွယ်ပါ 👉 {OWNER}"
-            )
 
 app = Application.builder().token(TOKEN).build()
 
