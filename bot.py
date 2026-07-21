@@ -9,7 +9,7 @@ ALL_COURSES = {
     "flash": {
         "title": "The Flash (2014)",
         "videos": {
-            1: "AAMCBQADGQEDX1V_a19eVk62LzCTrKjv_7BEv0WtD84AAiqeAAKfY4FUXJNsFXUqRPEBAdtAAM9BA",
+            1: "AAMCBQADGQEDXlV_al9eVk62LzCTrKjv_7BEv0WtD84AAiQeAAKFy4FUXJNsFXuqRPEBAAdtAAM9BA",
             2: "AAMCBQADGQEDXl5Qal9l8QAB-eBpKsJe-DECTOQgKQ77AAIlHgAChcuBVK49jZTQRMVjAQAHbQADPQQ",
             3: "AAMCBQADGQEDXl5-al9mFiIMkV1nc2RucvmJodK_ULoAAiYeAAKFy4FUNRtZ8dDMvisBAAdtAAM9BA",
             4: "AAMCBQADGQEDXl8-al9m0URt8_QaItigKtAt9NYDt-IAAiseAAKFy4FUtGnma9kwiGUBAAdtAAM9BA",
@@ -17,7 +17,7 @@ ALL_COURSES = {
             6: "အပိုင်း ၆ ရဲ့ File ID",
         }
     },
-    "Lucifer (2016)": {
+    "spiderman": {
         "title": "Spider-Man",
         "videos": {
             1: "File ID ထည့်ရန်",
@@ -116,23 +116,6 @@ ALL_COURSES = {
             6: "File ID ထည့်ရန်",
         }
     }
-    
-    # ==========================================
-    # 📌 နောက်ထပ် ခေါင်းစဉ်အသစ်များ ထပ်ထည့်ရန်နေရာ 
-    # (နံပါတ် ၁၁ နှင့်အထက် ထည့်လိုပါက ဤနေရာတွင် အောက်ပါအတိုင်း ဆက်ရေးပါ)
-    # ==========================================
-    # ,
-    # "deadpool": {
-    #     "title": "Deadpool",
-    #     "videos": {
-    #         1: "File ID ထည့်ရန်",
-    #         2: "File ID ထည့်ရန်",
-    #         3: "File ID ထည့်ရန်",
-    #         4: "File ID ထည့်ရန်",
-    #         5: "File ID ထည့်ရန်",
-    #         6: "File ID ထည့်ရန်",
-    #     }
-    # }
 }
 
 async def start(update: Update, context: ContextTypes.DEFAULT_TYPE):
@@ -214,4 +197,3 @@ app.add_handler(CommandHandler("start", start))
 app.add_handler(CallbackQueryHandler(button_handler))
 
 app.run_polling()
-    
