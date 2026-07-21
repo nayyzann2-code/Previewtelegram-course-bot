@@ -1,28 +1,143 @@
 from telegram import Update, InlineKeyboardButton, InlineKeyboardMarkup
-from telegram.ext import Application, CallbackQueryHandler, CommandHandler, MessageHandler, ContextTypes, filters
+from telegram.ext import Application, CallbackQueryHandler, CommandHandler, ContextTypes
 
 TOKEN = "8930481030:AAESGgpg4aEzGgCIvxIq85O9WGiFmOkojCM"
 OWNER = "https://t.me/naywww01"
 
-# 📂 ခေါင်းစဉ်များနှင့် အပိုင်းများ (အပိုင်း ၁ မှ ၆ အထိ File ID များကို ဤနေရာတွင် ထည့်ပါ)
+# 📂 ခေါင်းစဉ် ၁၀ ခုစာအတွက် ဗီဒီယို File ID များ
 ALL_COURSES = {
-    "1": {
-        "title": "ပထမခေါင်းစဉ်အမည် (ဥပမာ- Python Basic)",
+    "flash": {
+        "title": "The Flash (2014)",
         "videos": {
-            1: "အပိုင်း ၁ ရဲ့ File ID ကို ဤနေရာတွင် ထည့်ပါ",
-            2: "အပိုင်း ၂ ရဲ့ File ID ကို ဤနေရာတွင် ထည့်ပါ",
-            3: "အပိုင်း ၃ ရဲ့ File ID ကို ဤနေရာတွင် ထည့်ပါ",
-            4: "အပိုင်း ၄ ရဲ့ File ID ကို ဤနေရာတွင် ထည့်ပါ",
-            5: "အပိုင်း ၅ ရဲ့ File ID ကို ဤနေရာတွင် ထည့်ပါ",
-            6: "အပိုင်း ၆ ရဲ့ File ID ကို ဤနေရာတွင် ထည့်ပါ",
+            1: "AAMCBQADGQEDX1V_a19eVk62LzCTrKjv_7BEv0WtD84AAiqeAAKfY4FUXJNsFXUqRPEBAdtAAM9BA",
+            2: "AAMCBQADGQEDXl5Qal9l8QAB-eBpKsJe-DECTOQgKQ77AAIlHgAChcuBVK49jZTQRMVjAQAHbQADPQQ",
+            3: "AAMCBQADGQEDXl5-al9mFiIMkV1nc2RucvmJodK_ULoAAiYeAAKFy4FUNRtZ8dDMvisBAAdtAAM9BA",
+            4: "AAMCBQADGQEDXl8-al9m0URt8_QaItigKtAt9NYDt-IAAiseAAKFy4FUtGnma9kwiGUBAAdtAAM9BA",
+            5: "AAMCBQADGQEDXl9Nal9m22u3eqv_ckXtOZQcONYNa0AAAtcjAAJZxHhUy55L6Rw8zuoBAAdtAAM9BA",
+            6: "အပိုင်း ၆ ရဲ့ File ID",
+        }
+    },
+    "Lucifer (2016)": {
+        "title": "Spider-Man",
+        "videos": {
+            1: "File ID ထည့်ရန်",
+            2: "File ID ထည့်ရန်",
+            3: "File ID ထည့်ရန်",
+            4: "File ID ထည့်ရန်",
+            5: "File ID ထည့်ရန်",
+            6: "File ID ထည့်ရန်",
+        }
+    },
+    "batman": {
+        "title": "The Batman",
+        "videos": {
+            1: "File ID ထည့်ရန်",
+            2: "File ID ထည့်ရန်",
+            3: "File ID ထည့်ရန်",
+            4: "File ID ထည့်ရန်",
+            5: "File ID ထည့်ရန်",
+            6: "File ID ထည့်ရန်",
+        }
+    },
+    "ironman": {
+        "title": "Iron Man",
+        "videos": {
+            1: "File ID ထည့်ရန်",
+            2: "File ID ထည့်ရန်",
+            3: "File ID ထည့်ရန်",
+            4: "File ID ထည့်ရန်",
+            5: "File ID ထည့်ရန်",
+            6: "File ID ထည့်ရန်",
+        }
+    },
+    "thor": {
+        "title": "Thor",
+        "videos": {
+            1: "File ID ထည့်ရန်",
+            2: "File ID ထည့်ရန်",
+            3: "File ID ထည့်ရန်",
+            4: "File ID ထည့်ရန်",
+            5: "File ID ထည့်ရန်",
+            6: "File ID ထည့်ရန်",
+        }
+    },
+    "captain": {
+        "title": "Captain America",
+        "videos": {
+            1: "File ID ထည့်ရန်",
+            2: "File ID ထည့်ရန်",
+            3: "File ID ထည့်ရန်",
+            4: "File ID ထည့်ရန်",
+            5: "File ID ထည့်ရန်",
+            6: "File ID ထည့်ရန်",
+        }
+    },
+    "superman": {
+        "title": "Superman",
+        "videos": {
+            1: "File ID ထည့်ရန်",
+            2: "File ID ထည့်ရန်",
+            3: "File ID ထည့်ရန်",
+            4: "File ID ထည့်ရန်",
+            5: "File ID ထည့်ရန်",
+            6: "File ID ထည့်ရန်",
+        }
+    },
+    "avengers": {
+        "title": "Avengers",
+        "videos": {
+            1: "File ID ထည့်ရန်",
+            2: "File ID ထည့်ရန်",
+            3: "File ID ထည့်ရန်",
+            4: "File ID ထည့်ရန်",
+            5: "File ID ထည့်ရန်",
+            6: "File ID ထည့်ရန်",
+        }
+    },
+    "matrix": {
+        "title": "The Matrix",
+        "videos": {
+            1: "File ID ထည့်ရန်",
+            2: "File ID ထည့်ရန်",
+            3: "File ID ထည့်ရန်",
+            4: "File ID ထည့်ရန်",
+            5: "File ID ထည့်ရန်",
+            6: "File ID ထည့်ရန်",
+        }
+    },
+    "avatar": {
+        "title": "Avatar",
+        "videos": {
+            1: "File ID ထည့်ရန်",
+            2: "File ID ထည့်ရန်",
+            3: "File ID ထည့်ရန်",
+            4: "File ID ထည့်ရန်",
+            5: "File ID ထည့်ရန်",
+            6: "File ID ထည့်ရန်",
         }
     }
+    
+    # ==========================================
+    # 📌 နောက်ထပ် ခေါင်းစဉ်အသစ်များ ထပ်ထည့်ရန်နေရာ 
+    # (နံပါတ် ၁၁ နှင့်အထက် ထည့်လိုပါက ဤနေရာတွင် အောက်ပါအတိုင်း ဆက်ရေးပါ)
+    # ==========================================
+    # ,
+    # "deadpool": {
+    #     "title": "Deadpool",
+    #     "videos": {
+    #         1: "File ID ထည့်ရန်",
+    #         2: "File ID ထည့်ရန်",
+    #         3: "File ID ထည့်ရန်",
+    #         4: "File ID ထည့်ရန်",
+    #         5: "File ID ထည့်ရန်",
+    #         6: "File ID ထည့်ရန်",
+    #     }
+    # }
 }
 
 async def start(update: Update, context: ContextTypes.DEFAULT_TYPE):
     args = context.args
     
-    # Review လင့်ခ်ကနေ နှိပ်လာရင် (ဥပမာ ?start=1_1)
     if args:
         payload = args[0]
         try:
@@ -31,14 +146,12 @@ async def start(update: Update, context: ContextTypes.DEFAULT_TYPE):
             
             if course_id in ALL_COURSES:
                 course = ALL_COURSES[course_id]
-                # အပိုင်း ၁ မှ ၆ အတွင်း ဖြစ်မှသာ ဗီဒီယိုပြမည်
                 if 1 <= part_num <= 6 and part_num in course["videos"]:
                     video_id = course["videos"][part_num]
-                    await update.message.reply_text(f"✅ {course['title']} (အပိုင်း {part_num})")
+                    await update.message.reply_text(f"✅ {course['title']} (S01Ep0{part_num})")
                     await update.message.reply_video(video=video_id)
                     return
                 else:
-                    # အပိုင်း ၇ နှင့်အထက်ဆိုလျှင် မန်ဘာဝင်ရန် ပြမည်
                     await update.message.reply_text(
                         "⚠️ အပိုင်း 7 မှစ၍ Free မဟုတ်တော့ပါ။\n\n"
                         "ဆက်လက်ကြည့်ရှုရန် **မန်ဘာဝင်ရန်** လိုအပ်ပါသည်။ "
@@ -48,45 +161,45 @@ async def start(update: Update, context: ContextTypes.DEFAULT_TYPE):
         except ValueError:
             pass
 
-    # ပုံမှန် /start နှိပ်လာလျှင်
-    await update.message.reply_text(
-        "📚 သင်ခန်းစာများ ရှာဖွေရန် ကြိုဆိုပါတယ်။\n\n"
-        "လိုချင်သော **ခေါင်းစဉ်နံပါတ် (သို့မဟုတ်) အမည်** ကို ရိုက်ထည့်ပေးပါ။\n"
-        "(ဥပမာ - `1` ဟု ရိုက်ထည့်ပါ)"
-    )
-
-async def search_course(update: Update, context: ContextTypes.DEFAULT_TYPE):
-    query_text = update.message.text.strip()
-    
-    if query_text in ALL_COURSES:
-        course = ALL_COURSES[query_text]
+    keyboard = []
+    for cid, course in ALL_COURSES.items():
+        keyboard.append([InlineKeyboardButton(course["title"], callback_data=f"select_{cid}")])
         
-        keyboard = []
-        for part_num in course["videos"].keys():
-            keyboard.append([InlineKeyboardButton(f"အပိုင်း {part_num}", callback_data=f"c_{query_text}_p_{part_num}")])
-            
-        reply_markup = InlineKeyboardMarkup(keyboard)
-        await update.message.reply_text(
-            f"📂 **{course['title']}**\nကြည့်ရှုလိုသည့် အပိုင်းကို ရွေးပါ -", 
-            reply_markup=reply_markup,
-            parse_mode="Markdown"
-        )
-    else:
-        await update.message.reply_text("❌ ထိုခေါင်းစဉ်ကို မတွေ့ရှိရပါ၊ မှန်ကန်သော နံပါတ်ကို ပြန်လည်ရိုက်ထည့်ပါ။")
+    reply_markup = InlineKeyboardMarkup(keyboard)
+    await update.message.reply_text(
+        "🎬 ကြည့်ရှုလိုသော ဇာတ်ကား (သို့မဟုတ်) ခေါင်းစဉ်ကို ရွေးချယ်ပါ -",
+        reply_markup=reply_markup
+    )
 
 async def button_handler(update: Update, context: ContextTypes.DEFAULT_TYPE):
     query = update.callback_query
     await query.answer()
     
     data = query.data
-    if data.startswith("c_"):
+    
+    if data.startswith("select_"):
+        _, course_id = data.split("_")
+        course = ALL_COURSES[course_id]
+        
+        keyboard = []
+        for part_num in course["videos"].keys():
+            keyboard.append([InlineKeyboardButton(f"S01Ep0{part_num}", callback_data=f"c_{course_id}_p_{part_num}")])
+            
+        reply_markup = InlineKeyboardMarkup(keyboard)
+        await query.message.edit_text(
+            f"📂 **{course['title']}**\nကြည့်ရှုလိုသည့် အပိုင်းကို ရွေးပါ -", 
+            reply_markup=reply_markup,
+            parse_mode="Markdown"
+        )
+        
+    elif data.startswith("c_"):
         _, course_id, _, part_num = data.split("_")
         part_num = int(part_num)
         
         course = ALL_COURSES[course_id]
         if 1 <= part_num <= 6 and part_num in course["videos"]:
             video_id = course["videos"][part_num]
-            await query.message.reply_text(f"✅ {course['title']} (အပိုင်း {part_num})")
+            await query.message.reply_text(f"✅ {course['title']} (S01Ep0{part_num})")
             await query.message.reply_video(video=video_id)
         else:
             await query.message.reply_text(
@@ -98,7 +211,7 @@ async def button_handler(update: Update, context: ContextTypes.DEFAULT_TYPE):
 app = Application.builder().token(TOKEN).build()
 
 app.add_handler(CommandHandler("start", start))
-app.add_handler(MessageHandler(filters.TEXT & ~filters.COMMAND, search_course))
 app.add_handler(CallbackQueryHandler(button_handler))
 
 app.run_polling()
+    
