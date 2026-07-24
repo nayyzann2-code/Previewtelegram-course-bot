@@ -75,7 +75,8 @@ async def start(update: Update, context: ContextTypes.DEFAULT_TYPE):
     reply_markup = InlineKeyboardMarkup(keyboard)
     
     # ပြန်လည်ထည့်သွင်းထားသော Welcome ပိုစတာပုံ (File ID)
-    welcome_poster = "AgACAgUAAxkBAAEgueJqYFrWN-knIvOwmsOQ859SgDB3eQACUxVrG9u7CFdtu8B_Lb_nPQEAAwIAA3gAAz0E"
+    welcome_poster = "AgACAgUAAxkBAAEgznRqYurUmUDnoIVz7fnSiFsAAUMwMUoAAvYaaxvLRRFXAeiFaImm8hIBAAMCAAN4AAM9BA
+"
     
     welcome_text = (
         "✨ **ကြိုဆိုပါတယ်ခင်ဗျာ!**\n\n"
